@@ -1,6 +1,6 @@
 import NavigationHeader from "../components/NavigationHeader.jsx";
 
-export default function () {
+export default function ManageCars () {
     return (
         <>
             <NavigationHeader />

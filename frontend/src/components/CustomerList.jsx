@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-export default function () {
+export default function CustomerList() {
     const [customers, setCustomers] = useState([])
     const [loading, setLoading] = useState(false);
 
@@ -44,7 +44,7 @@ export default function () {
     });
 
     const remove = async (id) => {
-        await fetch(`/api/customer/${id}`, {
+        await fetch(`/api/customers/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
