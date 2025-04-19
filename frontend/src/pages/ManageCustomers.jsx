@@ -1,21 +1,18 @@
 import NavigationHeader from "../components/NavigationHeader.jsx";
-import {useEffect, useState} from "react";
-import ManageCustomers from "./ManageCustomers.jsx";
+import CustomerList from "../components/CustomerList.jsx";
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 export default function () {
-    const [customers, setCustomers] = useState([])
-    useEffect(() => {
-        fetch("localhost:8080/api/customers", {method: "GET"})
-            .then(r => r.json())
-            .then(data => setCustomers(data))
-            .catch(err => console.log(err));
-    }, []);
 
     return (
         <>
             <NavigationHeader />
-            <h1>Loaded {customers.length} customers</h1>
-            <p>{}</p>
+            <div className="container">
+                <h1>Manage Customers</h1>
+                <Button variant={"success"} as={Link} to={"/customers/new"}>Add Customer</Button>
+                <CustomerList/>
+            </div>
         </>
     )
 };

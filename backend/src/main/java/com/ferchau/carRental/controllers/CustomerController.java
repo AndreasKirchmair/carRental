@@ -2,9 +2,7 @@ package com.ferchau.carRental.controllers;
 
 import com.ferchau.carRental.model.Customer;
 import com.ferchau.carRental.services.CustomerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class CustomerController {
     @GetMapping("/customers")
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
+    }
+
+    @DeleteMapping("/customer/{id}")
+    public void deleteCustomer(@PathVariable int id) {
+        customerService.deleteById(id);
     }
 }
