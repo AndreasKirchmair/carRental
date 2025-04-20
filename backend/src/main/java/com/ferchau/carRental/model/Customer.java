@@ -24,9 +24,6 @@ public class Customer implements Persistable<Integer>, Serializable {
 
     private String phone;
 
-    @OneToOne(mappedBy = "customer")
-    private Car car;
-
     public Customer() {}
 
     public Customer(String firstName, String lastName, String email, String phone) {

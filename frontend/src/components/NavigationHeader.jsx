@@ -13,6 +13,7 @@ export default function NavigationHeader() {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
                         <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
+                        <Nav.Link as={Link} to="/rental-information">Rental Information</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

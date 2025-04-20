@@ -9,8 +9,4 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, String> {
 
-    @Query("SELECT c FROM Car c JOIN FETCH c.customer WHERE c.vehicleIdentificationNumber = :id ")
-    public Car findByIdAndFetchCustomerEagerly(@Param("id") String id);
-
-    public List<Car> findByCustomerIsNotNull();
 }

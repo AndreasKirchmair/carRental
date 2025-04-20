@@ -9,8 +9,8 @@ export default function ManageCustomers () {
         <>
             <NavigationHeader />
             <div className="container">
-                <h1>Manage Customers</h1>
-                <Button variant={"success"} as={Link} to={"/customers/new"} className={"float-end"}>Add Customer</Button>
+                <h1>Manage customers</h1>
+                <Button variant={"success"} as={Link} to={"/customers/new"} className={"float-end"}>Add customer</Button>
                 <CustomerList/>
             </div>
         </>

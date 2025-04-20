@@ -2,9 +2,11 @@ package com.ferchau.carRental.controllers;
 
 import com.ferchau.carRental.model.Customer;
 import com.ferchau.carRental.services.CustomerService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -22,8 +24,12 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/{id}")
-    public Customer readCustomer(@PathVariable int id) {
-        return customerService.read(id);
+    public ResponseEntity<Customer> readCustomer(@PathVariable int id) {
+        Optional<Customer> optionalCustomer = customerService.read(id);
+        if (optionalCustomer.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(optionalCustomer.get());
     }
 
     @DeleteMapping("/customers/{id}")

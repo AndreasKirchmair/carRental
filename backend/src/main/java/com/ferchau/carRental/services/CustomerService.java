@@ -5,6 +5,7 @@ import com.ferchau.carRental.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -20,11 +21,11 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Customer read(int id) {
-        return customerRepository.findById(id).orElse(null);
+    public Optional<Customer> read(Integer id) {
+        return customerRepository.findById(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(Integer id) {
         customerRepository.deleteById(id);
     }
 

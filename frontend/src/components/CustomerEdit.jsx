@@ -37,8 +37,6 @@ export default function CustomerEdit() {
             return;
         }
 
-        setValidated(true);
-
         fetch(customer.id ? `/api/customers/${id}` : '/api/customers',
             {
                 method: customer.id ? 'PUT' : 'POST',
@@ -53,8 +51,6 @@ export default function CustomerEdit() {
                 if (r.ok) {
                     setCustomer(initialFormState);
                     navigate('/customers');
-                } else {
-                    navigate('/home');
                 }
             })
             .catch(err => console.log(err));
@@ -71,25 +67,20 @@ export default function CustomerEdit() {
             <Card.Body>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group className={"mb-3"} controlId={"formBasicFirstName"}>
-                        <Form.Label>First name</Form.Label>
+                        <Form.Label>First Name</Form.Label>
                         <Form.Control required name={"firstName"} type={"text"} placeholder={"Enter first name"} onChange={handleChange} value={customer.firstName} />
-                        <Form.Control.Feedback type="invalid">Please enter a first name</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className={"mb-3"} controlId={"formBasicLastName"}>
-                        <Form.Label>Last name</Form.Label>
+                        <Form.Label>Last Name</Form.Label>
                         <Form.Control required name={"lastName"} type={"text"} placeholder={"Enter last name"} onChange={handleChange} value={customer.lastName} />
-                        <Form.Control.Feedback type="invalid">Please enter a last name</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className={"mb-3"} controlId={"formBasicEmail"}>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control required name={"email"} type={"email"} placeholder={"Enter email"} onChange={handleChange} value={customer.email} />
-                        <Form.Control.Feedback type="invalid">Please enter an email</Form.Control.Feedback>
-
+                        <Form.Label>E-Mail</Form.Label>
+                        <Form.Control required name={"email"} type={"email"} placeholder={"Enter E-Mail"} onChange={handleChange} value={customer.email} />
                     </Form.Group>
                     <Form.Group className={"mb-3"} controlId={"formBasicPhone"}>
-                        <Form.Label>Phone number</Form.Label>
+                        <Form.Label>Phone</Form.Label>
                         <Form.Control required name={"phone"} type={"tel"} placeholder={"Enter phone number"} onChange={handleChange} value={customer.phone} />
-                        <Form.Control.Feedback type="invalid">Please enter a phone number</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className={"mb-3"} controlId={"buttons"}>
                         <Button variant={"success"} type={"submit"}>Save</Button>{'  '}

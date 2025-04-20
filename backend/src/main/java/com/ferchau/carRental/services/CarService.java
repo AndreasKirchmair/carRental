@@ -4,6 +4,9 @@ import com.ferchau.carRental.model.Car;
 import com.ferchau.carRental.repositories.CarRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CarService {
 
@@ -18,16 +21,15 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public Car read(String id) {
-        return carRepository.findById(id).orElse(null);
+    public Optional<Car> read(String id) {
+        return carRepository.findById(id);
     }
 
-    public Car readAndFetchCustomerEagerly(String id) {
-        return carRepository.findByIdAndFetchCustomerEagerly(id);
+    public void deleteById(String id) {
+        carRepository.deleteById(id);
     }
 
-    public void delete(Car car) {
-        carRepository.delete(car);
+    public List<Car> getCars() {
+        return carRepository.findAll();
     }
-
 }

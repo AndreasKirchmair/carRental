@@ -1,5 +1,6 @@
 package com.ferchau.carRental.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.data.domain.Persistable;
 
@@ -12,8 +13,7 @@ public class Car implements Persistable<String>, Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id")
-    private String vehicleIdentificationNumber;
+    private String id;
 
     @Column(nullable = false)
     private String brand;
@@ -31,14 +31,10 @@ public class Car implements Persistable<String>, Serializable {
     @Transient
     private boolean isNew = true;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customerId")
-    private Customer customer;
-
     public Car() {}
 
-    public Car(String vehicleIdentificationNumber, String brand, String model, int vintage, String color, int kilometers) {
-        this.vehicleIdentificationNumber = vehicleIdentificationNumber;
+    public Car(String id, String brand, String model, int vintage, String color, int kilometers) {
+        this.id = id;
         this.brand = brand;
         this.model = model;
         this.vintage = vintage;
@@ -48,10 +44,11 @@ public class Car implements Persistable<String>, Serializable {
 
     @Override
     public String getId() {
-        return vehicleIdentificationNumber;
+        return id;
     }
 
     @Override
+    @JsonIgnore
     public boolean isNew() {
         return isNew;
     }
@@ -60,5 +57,45 @@ public class Car implements Persistable<String>, Serializable {
     @PostLoad
     public void markNotNew() {
         isNew = false;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getVintage() {
+        return vintage;
+    }
+
+    public void setVintage(int vintage) {
+        this.vintage = vintage;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getKilometers() {
+        return kilometers;
+    }
+
+    public void setKilometers(int kilometers) {
+        this.kilometers = kilometers;
     }
 }
