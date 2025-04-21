@@ -2,6 +2,8 @@ package com.ferchau.carRental.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.domain.Persistable;
 
 import java.io.Serializable;
@@ -17,10 +19,12 @@ public class RentalInformation implements Persistable<Integer>, Serializable {
     private Integer id;
 
     @OneToOne(optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToOne(optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "car_id")
     private Car car;
 
