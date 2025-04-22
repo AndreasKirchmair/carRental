@@ -27,9 +27,10 @@ java -jar target/carRental-0.0.1-SNAPSHOT.jar
 
 Windows/Linux:
 ```
+cd frontend
 npm run build
 ```
-This creates a static site. To preview this site locally, use the following command:
+This creates a static site. To preview this site locally (localhost:4173), use the following command:
 ```
 npm run preview
 ```
